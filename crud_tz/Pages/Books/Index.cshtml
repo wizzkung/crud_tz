@@ -1,0 +1,90 @@
+﻿@page
+@model crud_tz.Pages.Books.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].shelf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].isIssued)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].issue_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].return_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Book) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shelf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isIssued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.issue_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.return_date)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
