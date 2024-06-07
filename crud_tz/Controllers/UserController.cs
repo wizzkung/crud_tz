@@ -29,7 +29,7 @@ namespace crud_tz.Controllers
             return CreatedAtAction(nameof(GetUser), new { id = user.id }, user);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("user/{id}")]
         public IActionResult GetUser(int id)
         {
             var user = _context.users.Find(id);

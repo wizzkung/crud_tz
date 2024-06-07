@@ -30,7 +30,7 @@ namespace crud_tz.Controllers
             return CreatedAtAction(nameof(GetBook), new { id = book.id }, book);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("book/{id}")]
         public IActionResult GetBook(int id)
         {
             var book = _context.books.Find(id);

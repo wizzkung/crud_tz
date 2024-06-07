@@ -11,16 +11,17 @@ namespace crud_tz
             builder.Services.AddDbContext<crud_tzContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("crud_tzContext") ?? throw new InvalidOperationException("Connection string 'crud_tzContext' not found.")));
 
-            // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddControllersWithViews();
+
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+          
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+             
                 app.UseHsts();
             }
 
@@ -32,6 +33,33 @@ namespace crud_tz
             app.UseAuthorization();
 
             app.MapRazorPages();
+            app.MapControllers();
+
+            app.MapControllerRoute(
+              name: "UserRoute",
+              pattern: "User/{action=Index}/{id?}",
+              defaults: new { controller = "UserController" });
+
+            app.MapControllerRoute(
+                name: "BooksRoute",
+                pattern: "Books/{action=Index}/{id?}",
+                defaults: new { controller = "BookController" });
+
+            app.MapControllerRoute(
+                name: "ReturnedBooksRoute",
+                pattern: "ReturnedBooks/{action=Index}/{id?}",
+                defaults: new { controller = "ReturnedController" });
+
+            app.MapControllerRoute(
+                name: "BookIssuesRoute",
+                pattern: "BookIssues/{action=Index}/{id?}",
+                defaults: new { controller = "BookIssue" });
+
+            app.MapControllerRoute(
+                name: "PopularRoute",
+                pattern: "Popular/{action=Index}/{id?}",
+                defaults: new { controller = "popularController" });
+            
 
             app.Run();
         }
